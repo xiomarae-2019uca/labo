@@ -1,0 +1,78 @@
+#include <iostream>
+#include <conio.h>
+#include <stdlib.h>
+
+//ejercicio 4 
+//binario de busqueda:  para todo nodo del arbol se debe cumplir que todos los valores almacenados en el subarbol 
+//izquierdo sean menores o iguales a la informacion guardada en el nodo.De forma similar todos los valores almacenados 
+//en el subarbol derecho deben ser mayores o iguales a la informacion guardada en el nodo.
+
+using namespace std;
+struct Nodo {
+    int dato;
+    Nodo *izq;
+    Nodo *der;
+    
+};
+void menu();
+
+Nodo *crearNodo (int);
+void insertarNodo(Nodo *&,int);
+    
+
+
+Nodo *arbol=NULL;
+
+
+int main(int argc, char** argv) {
+    menu();
+    
+    return 0;
+}
+void menu(){
+    int dato,opcion;
+    do{
+        cout<<"menu"<<endl;
+        cout<< "1.insertar nuevo nodo"<<endl;
+        cout<<"2. salir"<<endl;
+        cout<<"opcion"<<endl;
+        cin>>opcion;
+        switch (opcion){
+            case 1:cout<<"digite un numero"<<endl;
+            cin>>dato;
+            insertarNodo(arbol,dato);
+            cout<<"\n";
+            break;
+            
+        }
+    }while (opcion != 2);
+    
+    
+}
+Nodo *crearNodo (int n){
+    Nodo * nuevo_nodo=new Nodo();
+    nuevo_nodo->dato=n;
+    nuevo_nodo->der=NULL;
+    nuevo_nodo->izq=NULL;
+    
+    return nuevo_nodo;
+    
+    
+    
+}
+void insertarNodo (Nodo *&arbol,int n){
+    if (arbol == NULL){
+        Nodo *nuevo_nodo=crearNodo(n);
+        
+    }
+    else{
+        int valorRaiz = arbol->dato;
+      if (n < valorRaiz){
+                    insertarNodo(arbol->izq,n);
+      }
+                else {
+          insertarNodo(arbol->der,n);
+          
+      }
+    }
+}
